@@ -9,16 +9,14 @@ function App() {
   const [category, setCategory] = useState("");
   const [note, setNote] = useState("");
 
+  const [expenseCount, setExpenseCount] = useState(0);
+  const [expenses, setExpenses] = useState([]);
+
   async function addExpense() {
     try {
       const contract = await getContract();
 
-      const tx = await contract.addExpense(
-        amount,
-        token,
-        category,
-        note
-      );
+      const tx = await contract.addExpense(amount, token, category, note);
 
       alert("Transaction submitted! Please confirm in Rabby.");
 
@@ -31,6 +29,30 @@ function App() {
       setCategory("");
       setNote("");
 
+      loadExpenses();
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  }
+
+  async function loadExpenses() {
+    try {
+      const contract = await getContract();
+
+      const count = await contract.getExpenseCount();
+      const total = Number(count);
+
+      setExpenseCount(total);
+
+      let list = [];
+
+      for (let i = 0; i < total; i++) {
+        const expense = await contract.getExpense(i);
+        list.push(expense);
+      }
+
+      setExpenses(list);
     } catch (err) {
       console.error(err);
       alert(err.message);
@@ -43,7 +65,8 @@ function App() {
 
       <ConnectWallet />
 
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="number"
@@ -52,7 +75,8 @@ function App() {
         onChange={(e) => setAmount(e.target.value)}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="text"
@@ -61,7 +85,8 @@ function App() {
         onChange={(e) => setToken(e.target.value)}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="text"
@@ -70,7 +95,8 @@ function App() {
         onChange={(e) => setCategory(e.target.value)}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="text"
@@ -79,11 +105,27 @@ function App() {
         onChange={(e) => setNote(e.target.value)}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
-      <button onClick={addExpense}>
-        Add Expense
-      </button>
+      <button onClick={addExpense}>Add Expense</button>
+
+      <br />
+      <br />
+
+      <button onClick={loadExpenses}>Load Expenses</button>
+
+      <h2>Total Expenses: {expenseCount}</h2>
+
+      {expenses.map((expense, index) => (
+        <div key={index}>
+          <p>Amount: {expense[0].toString()}</p>
+          <p>Token: {expense[1]}</p>
+          <p>Category: {expense[2]}</p>
+          <p>Note: {expense[3]}</p>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }
