@@ -29,7 +29,7 @@ function App() {
       setCategory("");
       setNote("");
 
-      loadExpenses();
+      await loadExpenses();
     } catch (err) {
       console.error(err);
       alert(err.message);
