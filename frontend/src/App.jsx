@@ -23,7 +23,21 @@ function App() {
   const [showWalletMenu, setShowWalletMenu] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  async function checkMonadNetwork() {
+    const chainId = await window.ethereum.request({
+      method: "eth_chainId",
+    });
+
+    if (chainId !== "0x279f") {
+      toast.error("⚠️ Please switch to Monad Testnet.");
+      return false;
+    }
+
+    return true;
+  }
+
   async function addExpense() {
+    if (!(await checkMonadNetwork())) return;
     try {
       const contract = await getContract();
 
@@ -47,11 +61,7 @@ function App() {
     }
   }
   async function loadExpenses() {
-    if (!window.ethereum?.selectedAddress) {
-      toast.error("Please connect your wallet first.");
-      return;
-    }
-
+    if (!(await checkMonadNetwork())) return;
     try {
       const contract = await getContract();
 
