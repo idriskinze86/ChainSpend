@@ -1,8 +1,12 @@
-import { useState } from "react";
-
-function ConnectWallet() {
-  const [account, setAccount] = useState("");
-
+function ConnectWallet({
+  account,
+  setAccount,
+  showWalletMenu,
+  setShowWalletMenu,
+  disconnectWallet,
+  copied,
+  setCopied,
+}) {
   async function connectWallet() {
     if (!window.ethereum) {
       alert("Please install Rabby Wallet or another EVM wallet.");
@@ -22,14 +26,59 @@ function ConnectWallet() {
 
   return (
     <div>
-      <button onClick={connectWallet}>
-        {account ? "Wallet Connected" : "Connect Rabby Wallet"}
+      <button
+        onClick={() => {
+          if (account) {
+            setShowWalletMenu(!showWalletMenu);
+          } else {
+            connectWallet();
+          }
+        }}
+      >
+        {account ? "🟢 Wallet Connected ▼" : "Connect Wallet"}
       </button>
 
-      <p>
-        <strong>Wallet:</strong>{" "}
-        {account || "Not Connected"}
-      </p>
+      {account ? (
+        <>
+          <p>
+            <strong>Wallet:</strong> {account.slice(0, 6)}...{account.slice(-4)}
+          </p>
+          {copied && (
+            <div className="copy-toast">✅ Wallet address copied!</div>
+          )}
+
+          {showWalletMenu && (
+            <div className="wallet-menu">
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(account);
+
+                  setCopied(true);
+
+                  setTimeout(() => {
+                    setCopied(false);
+                  }, 2000);
+
+                  setShowWalletMenu(false);
+                }}
+              >
+                📋 Copy Address
+              </button>
+              <button className="disconnect-btn" onClick={disconnectWallet}>
+                🚪 Disconnect App
+              </button>
+              <div className="wallet-menu-note">
+                💡 To fully disconnect, remove this site from your wallet's
+                Connected Sites.
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <p>
+          <strong>🔴 Wallet:</strong> Not Connected
+        </p>
+      )}
     </div>
   );
 }
