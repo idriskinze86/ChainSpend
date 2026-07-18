@@ -98,16 +98,14 @@ npm install
 ## 📂 Project Structure
 
 ChainSpend/
-├── contracts/
-├── scripts/
-├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── App.jsx
-│ │ └── App.css
-│ └── package.json
-├── screenshots/
+├── contracts/ # Solidity smart contracts
+├── frontend/ # React + Vite application
+├── screenshots/ # README screenshots
+├── scripts/ # Deployment and utility scripts
+├── DEPLOYMENTS.md
+├── LICENSE
+├── package-lock.json
+├── package.json
 └── README.md
 
 ---
