@@ -175,7 +175,7 @@ function App() {
 
     link.download = `chainspend-expenses-${today}.csv`;
 
-    toast.success("📤 CSV exported successfully!", { duration: 10000 });
+    toast.success("📤 CSV exported successfully!");
 
     setTimeout(() => {
       link.click();
