@@ -1,16 +1,133 @@
-# React + Vite
+# 💸 ChainSpend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A decentralized expense tracker built on the Monad Testnet that enables users to securely record, manage, search, and export expenses on-chain using an EVM-compatible wallet.
 
-Currently, two official plugins are available:
+![Home](screenshots/home.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🔗 Links
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌐 Live Demo: https://chainspend.vercel.app
+- 💻 Source Code: https://github.com/idriskinze86/ChainSpend
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🔐 Connect with Rabby Wallet or any EVM-compatible wallet
+- ⛓️ Secure on-chain expense storage
+- 📊 Dashboard with expense statistics
+- 🔍 Search expenses by token, category, or note
+- 📤 Export expense history as CSV
+- 🔔 Toast notifications for user actions
+- 🌐 Automatic Monad Testnet network validation
+- 📱 Responsive and modern user interface
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home
+
+Shows the landing page before connecting a wallet.
+
+![Home](screenshots/home.png)
+
+### 🔗 Wallet Connected
+
+Displays a connected wallet and wallet management options.
+
+![Wallet Connected](screenshots/wallet-connected.png)
+
+### 📊 Dashboard
+
+Overview of expenses, spending statistics, and expense history.
+
+![Dashboard](screenshots/dashboard.png)
+
+### 🔍 Search Expenses
+
+Quickly filter expenses by token, category, or note.
+
+![Search](screenshots/search.png)
+
+### 📤 CSV Export
+
+Export expense history to a CSV file.
+
+![CSV Export](screenshots/csv-export.png)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- Ethers.js
+- CSS
+
+### Blockchain
+
+- Solidity
+- Hardhat
+- Monad Testnet
+
+### Deployment
+
+- Vercel
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+git clone https://github.com/idriskinze86/ChainSpend.git
+
+### Install dependencies
+
+npm install
+
+### Start the development server
+
+## npm run dev
+
+## 📂 Project Structure
+
+ChainSpend/
+├── contracts/
+├── scripts/
+├── frontend/
+│ ├── public/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── App.jsx
+│ │ └── App.css
+│ └── package.json
+├── screenshots/
+└── README.md
+
+---
+
+## 🔮 Roadmap
+
+- 📈 Spending charts and analytics
+- 🌙 Dark mode
+- 📅 Monthly spending reports
+- 💱 Live token price conversion
+- 📱 Progressive Web App (PWA)
+
+---
+
+## 👨‍💻 Author
+
+Adepegba Idris
+
+GitHub: https://github.com/idriskinze86
+
+---
+
+Built with ❤️ on Monad Testnet.
