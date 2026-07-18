@@ -1,38 +1,133 @@
-# ChainSpend
+# 💸 ChainSpend
 
-A decentralized expense tracker built on Monad.
+A decentralized expense tracker built on the Monad Testnet that enables users to securely record, manage, search, and export expenses on-chain using an EVM-compatible wallet.
 
-## Problem
+![Home](screenshots/home.png)
 
-Crypto wallets show transactions but don't explain why you spent your money.
+---
 
-## Solution
+## 🔗 Links
 
-ChainSpend lets users save categorized expense records permanently on-chain.
+- 🌐 Live Demo: https://chainspend.vercel.app
+- 💻 Source Code: https://github.com/idriskinze86/ChainSpend
 
-## Features
+---
 
-- Connect Rabby Wallet
-- Add expenses
-- View personal expense history
-- On-chain storage
-- Monad Testnet
+## ✨ Features
 
-## Smart Contract
+- 🔐 Connect with Rabby Wallet or any EVM-compatible wallet
+- ⛓️ Secure on-chain expense storage
+- 📊 Dashboard with expense statistics
+- 🔍 Search expenses by token, category, or note
+- 📤 Export expense history as CSV
+- 🔔 Toast notifications for user actions
+- 🌐 Automatic Monad Testnet network validation
+- 📱 Responsive and modern user interface
 
-Current Contract:
+---
 
-0x24A3d7F42D76020d6C6dd1c87dcaCDA55E4b6b2a
+## 📸 Screenshots
 
-## Tech Stack
+### 🏠 Home
+
+Shows the landing page before connecting a wallet.
+
+![Home](screenshots/home.png)
+
+### 🔗 Wallet Connected
+
+Displays a connected wallet and wallet management options.
+
+![Wallet Connected](screenshots/wallet-connected.png)
+
+### 📊 Dashboard
+
+Overview of expenses, spending statistics, and expense history.
+
+![Dashboard](screenshots/dashboard.png)
+
+### 🔍 Search Expenses
+
+Quickly filter expenses by token, category, or note.
+
+![Search](screenshots/search.png)
+
+### 📤 CSV Export
+
+Export expense history to a CSV file.
+
+![CSV Export](screenshots/csv-export.png)
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- React
+- Vite
+- Ethers.js
+- CSS
+
+### Blockchain
 
 - Solidity
-- Ethers.js
+- Hardhat
 - Monad Testnet
-- Next.js
-- React
-- Tailwind CSS
 
-## Status
+### Deployment
 
-🚧 In Development
+- Vercel
+
+---
+
+## 🚀 Getting Started
+
+### Clone the repository
+
+git clone https://github.com/idriskinze86/ChainSpend.git
+
+### Install dependencies
+
+npm install
+
+### Start the development server
+
+## npm run dev
+
+## 📂 Project Structure
+
+ChainSpend/
+├── contracts/
+├── scripts/
+├── frontend/
+│ ├── public/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── App.jsx
+│ │ └── App.css
+│ └── package.json
+├── screenshots/
+└── README.md
+
+---
+
+## 🔮 Roadmap
+
+- 📈 Spending charts and analytics
+- 🌙 Dark mode
+- 📅 Monthly spending reports
+- 💱 Live token price conversion
+- 📱 Progressive Web App (PWA)
+
+---
+
+## 👨‍💻 Author
+
+Adepegba Idris
+
+GitHub: https://github.com/idriskinze86
+
+---
+
+Built with ❤️ on Monad Testnet.
