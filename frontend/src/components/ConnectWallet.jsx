@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 function ConnectWallet({
   account,
   setAccount,
@@ -7,6 +9,8 @@ function ConnectWallet({
   copied,
   setCopied,
 }) {
+  const menuRef = useRef(null);
+
   async function connectWallet() {
     if (!window.ethereum) {
       alert("Please install Rabby Wallet or another EVM wallet.");
@@ -24,12 +28,31 @@ function ConnectWallet({
     }
   }
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      console.log("Clicked:", event.target);
+
+      if (!showWalletMenu) return;
+
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        console.log("Closing menu");
+        setShowWalletMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showWalletMenu, setShowWalletMenu]);
+
   return (
-    <div>
+    <div ref={menuRef} className="wallet-container">
       <button
         onClick={() => {
           if (account) {
-            setShowWalletMenu(!showWalletMenu);
+            setShowWalletMenu((prev) => !prev);
           } else {
             connectWallet();
           }
@@ -41,8 +64,10 @@ function ConnectWallet({
       {account ? (
         <>
           <p>
-            <strong>Wallet:</strong> {account.slice(0, 6)}...{account.slice(-4)}
+            <strong>Wallet:</strong> {account.slice(0, 6)}...
+            {account.slice(-4)}
           </p>
+
           {copied && (
             <div className="copy-toast">✅ Wallet address copied!</div>
           )}
@@ -64,9 +89,11 @@ function ConnectWallet({
               >
                 📋 Copy Address
               </button>
+
               <button className="disconnect-btn" onClick={disconnectWallet}>
                 🚪 Disconnect App
               </button>
+
               <div className="wallet-menu-note">
                 💡 To fully disconnect, remove this site from your wallet's
                 Connected Sites.

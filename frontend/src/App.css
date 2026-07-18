@@ -230,3 +230,7 @@ button:hover {
   line-height: 1.4;
   text-align: left;
 }
+.wallet-container {
+  display: inline-block;
+  position: relative;
+}
